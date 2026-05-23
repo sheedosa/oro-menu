@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ORO Sweets &amp; Pastries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+SC:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --burgundy: #5e1c2c;
+    --burgundy-deep: #4a1422;
+    --burgundy-soft: #6b2236;
+    --gold: #c4a35a;
+    --gold-soft: #d6bd7e;
+    --gold-deep: #9d8242;
+    --blush: #ead9d6;
+    --blush-soft: #ead8d4;
+    --cream: #f4e6e1;
+    --ink: #3d1320;
+    --ink-soft: #6a3041;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--burgundy);
+    color: #fff;
+    font-family: 'Inter', 'Tajawal', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* ============ Background pattern ============ */
+  .pattern-bg {
+    position: relative;
+    isolation: isolate;
+  }
+  .pattern-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 18% 22%, rgba(196,163,90,.05) 0 1px, transparent 2px),
+      radial-gradient(circle at 78% 38%, rgba(196,163,90,.04) 0 1px, transparent 2px),
+      radial-gradient(circle at 42% 78%, rgba(196,163,90,.05) 0 1px, transparent 2px),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='%23c4a35a' stroke-width='.6' opacity='.07'><path d='M50 300c40-80 110-120 200-90s130 100 90 200-150 110-220 50-120-100-70-160z'/><path d='M120 380c40-60 110-90 180-50s100 110 50 170-150 60-200 0-70-70-30-120z'/><path d='M300 100c50-30 130-10 170 50s30 130-30 170-150 30-190-30 0-160 50-190z'/><path d='M380 320c30-40 100-60 150-20s50 120 0 170-140 30-170-30-10-90 20-120z'/></g></svg>");
+    background-size: auto, auto, auto, 600px 600px;
+    opacity: .9;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .pattern-bg.light::before {
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='%23561a2b' stroke-width='.6' opacity='.08'><path d='M50 300c40-80 110-120 200-90s130 100 90 200-150 110-220 50-120-100-70-160z'/><path d='M120 380c40-60 110-90 180-50s100 110 50 170-150 60-200 0-70-70-30-120z'/><path d='M300 100c50-30 130-10 170 50s30 130-30 170-150 30-190-30 0-160 50-190z'/><path d='M380 320c30-40 100-60 150-20s50 120 0 170-140 30-170-30-10-90 20-120z'/></g></svg>");
+    background-size: 600px 600px;
+  }
+
+  /* ============ Typography helpers ============ */
+  .ar { font-family: 'Tajawal', 'Segoe UI', sans-serif; direction: rtl; }
+  .en-serif { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; letter-spacing: .25em; font-weight: 500; }
+  .en-display { font-family: 'Cormorant Garamond', serif; }
+
+  .container {
+    width: min(1180px, 100% - 40px);
+    margin-inline: auto;
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    min-height: 88vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 80px 0 60px;
+    position: relative;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero .eyebrow {
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .5em;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+  .hero .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(96px, 22vw, 240px);
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: .04em;
+    display: inline-block;
+    position: relative;
+  }
+  .hero .logo .swash {
+    display: inline-block;
+    font-style: italic;
+    transform: translateY(.06em);
+  }
+  .hero .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.4vw, 34px);
+    color: var(--blush);
+    font-weight: 400;
+    margin-top: 6px;
+    letter-spacing: .04em;
+  }
+  .hero .arabic-name {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    color: rgba(214,189,126,.65);
+    font-size: clamp(14px, 2vw, 18px);
+    margin-top: 28px;
+    letter-spacing: .04em;
+  }
+  .hero .divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 34px auto 28px;
+    opacity: .7;
+  }
+  .hero-hours {
+    display: inline-flex; flex-direction: column; gap: 4px;
+    padding: 14px 28px;
+    border: 1px solid rgba(196,163,90,.35);
+    border-radius: 999px;
+    background: rgba(71,21,35,.45);
+    font-size: 13px;
+    letter-spacing: .14em;
+    color: rgba(255,255,255,.85);
+  }
+  .hero-hours strong { color: var(--gold-soft); font-weight: 500; letter-spacing: .18em; }
+  .hero-scroll {
+    margin-top: 56px;
+    color: rgba(255,255,255,.5);
+    font-size: 11px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .hero-scroll::after {
+    content: '';
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, rgba(196,163,90,.7), transparent);
+  }
+
+  /* ============ Intro / Story ============ */
+  .intro {
+    padding: 100px 0 80px;
+    text-align: center;
+  }
+  .intro .body {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.55;
+    color: var(--blush);
+    font-weight: 400;
+    margin: 0;
+  }
+  .intro p + p { margin-top: 22px; }
+  .intro .ar-quote {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    color: rgba(214,189,126,.85);
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 28px;
+  }
+  .intro .ornament {
+    color: var(--gold);
+    font-size: 28px;
+    letter-spacing: .8em;
+    margin-bottom: 22px;
+    opacity: .8;
+  }
+
+  /* ============ Category strip ============ */
+  .category-strip {
+    background: var(--burgundy-deep);
+    border-top: 1px solid rgba(196,163,90,.18);
+    border-bottom: 1px solid rgba(196,163,90,.18);
+    position: sticky; top: 0; z-index: 40;
+  }
+  .category-scroll {
+    display: flex; gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding: 0;
+  }
+  .category-scroll::-webkit-scrollbar { display: none; }
+  .category-scroll a {
+    flex: 0 0 auto;
+    padding: 16px 22px;
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    scroll-snap-align: start;
+    border-right: 1px solid rgba(196,163,90,.1);
+    transition: color .2s, background .2s;
+    white-space: nowrap;
+  }
+  .category-scroll a:hover,
+  .category-scroll a.active { color: var(--gold-soft); }
+  .category-scroll a.active { background: rgba(196,163,90,.06); }
+
+  /* ============ Section base ============ */
+  section.menu-section {
+    padding: 90px 0 100px;
+    position: relative;
+    scroll-margin-top: 110px;
+  }
+  section.dark { background: var(--burgundy); color: #fff; }
+  section.light { background: var(--blush-soft); color: var(--ink); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+  .section-head .line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, currentColor);
+    opacity: .25;
+  }
+  .section-head .line.right { background: linear-gradient(to left, transparent, currentColor); }
+  .section-head .title-block { text-align: center; }
+  .section-head .ar-title {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    font-weight: 700;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1;
+    letter-spacing: .02em;
+    margin: 0;
+  }
+  section.dark .section-head .ar-title { color: #fff; }
+  section.light .section-head .ar-title { color: var(--burgundy); }
+  .section-head .en-title {
+    font-family: 'Cormorant SC', serif;
+    font-weight: 500;
+    letter-spacing: .5em;
+    font-size: clamp(13px, 1.4vw, 16px);
+    margin-top: 14px;
+    color: var(--gold);
+  }
+  section.light .section-head .en-title { color: var(--gold-deep); }
+
+  /* ============ Menu grid ============ */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .menu-grid.flip { grid-template-columns: 1fr 1.1fr; }
+  .menu-grid.flip .photo-cell { order: 2; }
+  .menu-grid.flip .items-cell { order: 1; }
+  @media (max-width: 860px) {
+    .menu-grid, .menu-grid.flip {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .menu-grid .photo-cell, .menu-grid .items-cell { order: initial !important; }
+  }
+
+  /* ============ Photo cell ============ */
+  .photo-cell {
+    position: relative;
+    display: block;
+    padding: 8px 18px 22px;
+    isolation: isolate;
+  }
+  .photo-cell .frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .photo-cell .frame img {
+    width: 100%;
+    display: block;
+    -webkit-mask-image: radial-gradient(ellipse 92% 94% at center, black 58%, transparent 100%);
+    mask-image: radial-gradient(ellipse 92% 94% at center, black 58%, transparent 100%);
+    filter: drop-shadow(0 24px 40px rgba(0,0,0,.35));
+  }
+  section.light .photo-cell .frame img {
+    filter: drop-shadow(0 18px 32px rgba(74, 20, 34, .18));
+  }
+  /* Gold corner ornaments */
+  .photo-cell .corner {
+    position: absolute;
+    width: 28px; height: 28px;
+    color: var(--gold);
+    opacity: .85;
+    pointer-events: none;
+  }
+  .photo-cell .corner.tl { top: 0; left: 0; border-top: 1px solid currentColor; border-left: 1px solid currentColor; }
+  .photo-cell .corner.tr { top: 0; right: 0; border-top: 1px solid currentColor; border-right: 1px solid currentColor; }
+  .photo-cell .corner.bl { bottom: 14px; left: 0; border-bottom: 1px solid currentColor; border-left: 1px solid currentColor; }
+  .photo-cell .corner.br { bottom: 14px; right: 0; border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; }
+  .photo-cell .corner::after {
+    content: '';
+    position: absolute;
+    width: 6px; height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: .6;
+  }
+  .photo-cell .corner.tl::after { top: -3px; left: -3px; }
+  .photo-cell .corner.tr::after { top: -3px; right: -3px; }
+  .photo-cell .corner.bl::after { bottom: -3px; left: -3px; }
+  .photo-cell .corner.br::after { bottom: -3px; right: -3px; }
+  /* Caption beneath image */
+  .photo-cell .caption {
+    text-align: center;
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .35em;
+    font-size: 10px;
+    color: var(--gold);
+    margin-top: 16px;
+    opacity: .8;
+  }
+  .photo-cell .caption::before,
+  .photo-cell .caption::after {
+    content: '·';
+    margin: 0 10px;
+    opacity: .7;
+  }
+  @media (max-width: 860px) {
+    .photo-cell { padding: 6px 8px 18px; }
+    .photo-cell .corner { width: 22px; height: 22px; }
+  }
+
+  /* ============ Item list ============ */
+  .item-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 2px;
+  }
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px dashed currentColor;
+    border-color: rgba(196,163,90,.22);
+  }
+  section.light .item { border-color: rgba(86,26,43,.18); }
+
+  .item .name {
+    display: flex; flex-direction: column;
+    gap: 2px;
+  }
+  .item .name .ar {
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .item .name .en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    opacity: .65;
+    letter-spacing: .04em;
+    font-style: italic;
+  }
+  .item .name .note {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    opacity: .55;
+    letter-spacing: .04em;
+    margin-top: 2px;
+  }
+  .item .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.1vw, 22px);
+    font-weight: 600;
+    color: var(--gold);
+    white-space: nowrap;
+    letter-spacing: .04em;
+  }
+  section.light .item .price { color: var(--gold-deep); }
+  .item .price .unit { font-size: .65em; opacity: .7; margin-left: 4px; letter-spacing: .12em; }
+
+  /* Featured item with gold highlight */
+  .item.featured .name .ar { color: var(--gold); }
+  section.light .item.featured .name .ar { color: var(--burgundy); }
+  .item.featured {
+    background: linear-gradient(90deg, transparent, rgba(196,163,90,.08) 50%, transparent);
+    padding-inline: 12px;
+    border-radius: 999px;
+    border-bottom: 1px dashed transparent;
+    border-color: transparent;
+  }
+
+  /* Subcategory tag */
+  .subcat {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--burgundy);
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .04em;
+    margin: 18px 0 6px;
+  }
+  .subcat.en {
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .25em;
+    font-size: 11px;
+  }
+
+  /* Two-price size columns (juices) */
+  .size-row {
+    display: grid; grid-template-columns: 1fr 90px 90px; gap: 16px;
+    padding: 8px 0 10px;
+    border-bottom: 1px solid rgba(196,163,90,.3);
+    margin-bottom: 6px;
+  }
+  .size-row .size-tag {
+    text-align: center;
+    background: var(--gold);
+    color: var(--burgundy);
+    padding: 4px 0;
+    border-radius: 999px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .item.two-price {
+    grid-template-columns: 1fr 90px 90px;
+  }
+  .item.two-price .price { text-align: center; }
+
+  /* ============ Footer ============ */
+  .site-footer {
+    background: var(--burgundy-deep);
+    padding: 60px 20px 40px;
+    border-top: 1px solid rgba(196,163,90,.2);
+    text-align: center;
+  }
+  .site-footer .footer-ornament {
+    color: var(--gold);
+    letter-spacing: 1em;
+    opacity: .55;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  .site-footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    color: var(--gold);
+    letter-spacing: .12em;
+    line-height: 1;
+  }
+  .site-footer .footer-sub {
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .35em;
+    font-size: 11px;
+    color: rgba(214,189,126,.7);
+    margin-top: 8px;
+  }
+  .site-footer .footer-hours {
+    margin-top: 22px;
+    font-size: 13px;
+    letter-spacing: .14em;
+    color: rgba(255,255,255,.7);
+  }
+  .site-footer .footer-sep {
+    opacity: .4;
+    margin: 0 14px;
+  }
+  .site-footer .footer-link {
+    display: block;
+    margin-top: 14px;
+    color: var(--gold-soft);
+    text-decoration: none;
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .3em;
+    font-size: 11px;
+    transition: color .2s;
+  }
+  .site-footer .footer-link:hover { color: var(--gold); }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 760px) {
+    section.menu-section { padding: 60px 0 70px; }
+    .section-head { gap: 16px; margin-bottom: 36px; }
+    .menu-grid { gap: 30px; }
+    .hero { min-height: 80vh; padding: 60px 0 40px; }
+    .intro { padding: 70px 0 60px; }
+    .category-strip { top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ Hero ============ -->
+<section id="top" class="hero pattern-bg">
+  <div class="hero-content container">
+    <div class="eyebrow">EST. LIBYA</div>
+    <div class="logo">OR<span class="swash">O</span></div>
+    <div class="tagline">Sweets &amp; Pastries</div>
+    <div class="arabic-name">حلويات ومخبوزات أورو</div>
+    <div class="divider"></div>
+    <div class="hero-hours">
+      <span><strong>SAT — THU</strong> &nbsp;·&nbsp; 8 AM – 11 PM</span>
+      <span><strong>FRI</strong> &nbsp;·&nbsp; 5 PM – 11 PM</span>
+    </div>
+    <div style="margin-top: 56px;">
+      <a href="#menu" class="hero-scroll" style="text-decoration:none;color:inherit;">Explore the menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Intro / Story ============ -->
+<section id="story" class="intro pattern-bg">
+  <div class="container body">
+    <div class="ornament">· · ·</div>
+    <p>Hand‑crafted coffee, fresh juices, and pastries baked in‑house — served from morning to late evening in the warmth of our café.</p>
+    <p class="ar-quote">نكهات غنية بأحجام مثالية وتفاصيل شهية تفتح شهيتك وترافقك في أولى خطواتك.</p>
+  </div>
+</section>
+
+<!-- ============ Category strip ============ -->
+<div id="menu" class="category-strip">
+  <div class="container">
+    <nav class="category-scroll">
+      <a href="#hot-drinks">Hot Drinks</a>
+      <a href="#cold-drinks">Cold Drinks</a>
+      <a href="#iced-coffee">Iced Coffee</a>
+      <a href="#milkshakes">Milkshakes</a>
+      <a href="#juices">Fresh Juices</a>
+      <a href="#smoothies">Smoothies</a>
+      <a href="#mojitos">Mojitos</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#crepes">Sweet Crepes</a>
+      <a href="#pancakes">Pancakes</a>
+      <a href="#waffles">Waffles</a>
+      <a href="#breakfast">Breakfast</a>
+      <a href="#croissant">Croissant</a>
+      <a href="#donuts">Donuts</a>
+      <a href="#cinnabon">Cinnabon</a>
+      <a href="#appetizers">Hot Appetizers</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ Hot Drinks ============ -->
+<section id="hot-drinks" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">مشروبات ساخنة</h2>
+        <div class="en-title">HOT DRINKS</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/hot-drinks.png" alt="Hot drinks in ORO branded cups" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Brewed in‑house</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">فلات وايت</span><span class="en">Flat White</span></div><div class="price">5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">إسبريسو</span><span class="en">Espresso</span><span class="note">دبل + 2 د.ل · Double +2</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">مكياطة</span><span class="en">Macchiato</span><span class="note">دبل + 2 د.ل · Double +2</span></div><div class="price">5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">أمريكانو</span><span class="en">Americano</span><span class="note">دبل + 3 د.ل · Double +3</span></div><div class="price">5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كابتشينو</span><span class="en">Cappuccino</span><span class="note">دبل + 3 د.ل · Double +3</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كافيه لاتيه</span><span class="en">Café Latte</span><span class="note">دبل + 3 د.ل · Double +3</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">نسكافيه</span><span class="en">Nescafé</span><span class="note">دبل + 2 · محلى + 2 د.ل</span></div><div class="price">5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">قهوة عربية</span><span class="en">Arabic Coffee</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سبسبال</span><span class="en">Sbesbal</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Tea, Hot Chocolate, Sentra ============ -->
+<section id="tea" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/tea-chocolate.png" alt="Hot chocolate with pistachio and toppings" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Tea &amp; chocolate</div>
+      </div>
+      <div class="items-cell">
+        <div class="subcat ar">شاي أحمر · Red Tea</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">ليبتون</span><span class="en">Lipton</span></div><div class="price">3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">شاي تونسي</span><span class="en">Tunisian Tea</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+        </ul>
+        <div class="subcat ar">شاي أخضر · Green Tea</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">ليبتون</span><span class="en">Lipton</span></div><div class="price">3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">شاي تونسي</span><span class="en">Tunisian Tea</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+        </ul>
+        <div class="subcat ar">هوت شوكليت · Hot Chocolate</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">هوت شوكليت بالمكسرات</span><span class="en">Hot Chocolate with Nuts</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">هوت شوكليت تيراميسو</span><span class="en">Hot Chocolate Tiramisu</span></div><div class="price">14<span class="unit">LYD</span></div></li>
+        </ul>
+        <div class="subcat ar">سنترا · Sentra</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">سنترا — صغير</span><span class="en">Sentra — Small</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سنترا — كبير</span><span class="en">Sentra — Large</span></div><div class="price">18<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Cold Drinks ============ -->
+<section id="cold-drinks" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">مشروبات باردة</h2>
+        <div class="en-title">COLD DRINKS</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">مياه (500 مل)</span><span class="en">Water · 500 ml</span></div><div class="price">1<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">مشروب غازي</span><span class="en">Soft Drink</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ماكس فلاي</span><span class="en">Max Fly</span></div><div class="price">5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ريد بول</span><span class="en">Red Bull</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/cold-drinks.png" alt="Cold canned drinks and water bottle" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Chilled &amp; fizzy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Iced Coffee ============ -->
+<section id="iced-coffee" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">قهوة باردة</h2>
+        <div class="en-title">ICED COFFEE</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/iced-coffee.png" alt="Row of iced coffee drinks in ORO cups" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Iced coffee bar</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">آيس أمريكانو</span><span class="en">Iced Americano</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس لاتيه</span><span class="en">Iced Latte</span></div><div class="price">18<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس سبانيش لاتيه</span><span class="en">Iced Spanish Latte</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس موكا ماكياتو</span><span class="en">Iced Mocha Macchiato</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس كراميل ماكياتو</span><span class="en">Iced Caramel Macchiato</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس موكا كراميل</span><span class="en">Iced Mocha Caramel</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس موكا بستاشيو</span><span class="en">Iced Pistachio Mocha</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس موكا فراولة</span><span class="en">Iced Strawberry Mocha</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">آيس وايت موكا فرابتشينو</span><span class="en">Iced White Mocha Frappé</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Milkshakes (light) ============ -->
+<section id="milkshakes" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">ميلك شيك</h2>
+        <div class="en-title">MILKSHAKES</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">أوريو</span><span class="en">Oreo</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">مانجو</span><span class="en">Mango</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">فراولة</span><span class="en">Strawberry</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">نوتيلا</span><span class="en">Nutella</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">لوتس</span><span class="en">Lotus</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بندق</span><span class="en">Hazelnut</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">فستق</span><span class="en">Pistachio</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/milkshake.png" alt="ORO milkshake cup with cat-ear lid" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Hand‑shaken</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Fresh Juices ============ -->
+<section id="juices" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">عصائر طبيعية</h2>
+        <div class="en-title">FRESH JUICES</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/juice.png" alt="ORO branded fresh juice bottles" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Cold‑pressed daily</div>
+      </div>
+      <div class="items-cell">
+        <div class="size-row">
+          <span></span>
+          <span class="size-tag">صغير<br><small style="font-size:9px;letter-spacing:.2em;">SMALL</small></span>
+          <span class="size-tag">كبير<br><small style="font-size:9px;letter-spacing:.2em;">LARGE</small></span>
+        </div>
+        <ul class="item-list">
+          <li class="item two-price"><div class="name"><span class="ar">ليمون ونعناع</span><span class="en">Lemon &amp; Mint</span></div><div class="price">8<span class="unit">LYD</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+          <li class="item two-price"><div class="name"><span class="ar">فراولة</span><span class="en">Strawberry</span></div><div class="price">8<span class="unit">LYD</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+          <li class="item two-price"><div class="name"><span class="ar">مانجو</span><span class="en">Mango</span></div><div class="price">8<span class="unit">LYD</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+          <li class="item two-price"><div class="name"><span class="ar">جوافة</span><span class="en">Guava</span></div><div class="price">8<span class="unit">LYD</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+          <li class="item two-price"><div class="name"><span class="ar">كوكتيل</span><span class="en">Cocktail</span></div><div class="price">9<span class="unit">LYD</span></div><div class="price">24<span class="unit">LYD</span></div></li>
+          <li class="item two-price"><div class="name"><span class="ar">برتقال</span><span class="en">Orange</span></div><div class="price">10<span class="unit">LYD</span></div><div class="price">25<span class="unit">LYD</span></div></li>
+          <li class="item two-price"><div class="name"><span class="ar">تمر باللوز</span><span class="en">Date with Almond</span></div><div class="price">10<span class="unit">LYD</span></div><div class="price">25<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Smoothies ============ -->
+<section id="smoothies" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">سموذي</h2>
+        <div class="en-title">SMOOTHIES</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">مانجو</span><span class="en">Mango</span></div><div class="price">9<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">جوافة وكرز</span><span class="en">Guava &amp; Cherry</span></div><div class="price">9<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">جوافة بلو</span><span class="en">Blue Guava</span></div><div class="price">9<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كوكتيل</span><span class="en">Cocktail</span></div><div class="price">9<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/smoothie.png" alt="ORO smoothie bottles" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Fresh fruit blends</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Mojitos (light) ============ -->
+<section id="mojitos" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">موخيتو</h2>
+        <div class="en-title">MOJITOS</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/mojito.png" alt="Colorful ORO mojito drinks on pedestals" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Mojito collection</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">رمان</span><span class="en">Pomegranate</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بلو كوراساو</span><span class="en">Blue Curaçao</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">علكة مارشميلو</span><span class="en">Marshmallow Bubble</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بلو أورانج</span><span class="en">Blue Orange</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">مانجو</span><span class="en">Mango</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">غلال الغابة</span><span class="en">Forest Berries</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ريد بول</span><span class="en">Red Bull</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بلو بيري</span><span class="en">Blueberry</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item featured"><div class="name"><span class="ar">فراولة — بابل</span><span class="en">Strawberry · Bubble</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item featured"><div class="name"><span class="ar">أناناس — بابل</span><span class="en">Pineapple · Bubble</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item featured"><div class="name"><span class="ar">بطيخ — بابل</span><span class="en">Watermelon · Bubble</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item featured"><div class="name"><span class="ar">باشن فروت — بابل</span><span class="en">Passion Fruit · Bubble</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Cookies ============ -->
+<section id="cookies" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">كوكيز</h2>
+        <div class="en-title">COOKIES</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">نوتيلا وبندق</span><span class="en">Nutella &amp; Hazelnut</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">شوكلت تشيبس</span><span class="en">Chocolate Chips</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">شوكلاتة</span><span class="en">Chocolate</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كوكيز دبي</span><span class="en">Dubai Cookies</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">نوتيلا</span><span class="en">Nutella</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بستاشيو</span><span class="en">Pistachio</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+        </ul>
+        <div class="subcat ar">علبة — 8 قطع · Box of 8</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">علبة كوكيز شوكلاتة</span><span class="en">Chocolate Cookie Box</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">علبة كوكيز بستاشيو</span><span class="en">Pistachio Cookie Box</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/cookies.png" alt="Chocolate hazelnut and pistachio cookie stacks" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Baked this morning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Sweet Crepes (light) ============ -->
+<section id="crepes" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">كريب حلو</h2>
+        <div class="en-title">SWEET CREPES</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/crepe.png" alt="Crepe with chocolate, pistachio, and strawberry" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Sweet crepes</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">كريب نوتيلا</span><span class="en">Nutella Crepe</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كريب كلاسيك</span><span class="en">Classic Crepe</span></div><div class="price">24<span class="unit">LYD</span></div></li>
+          <li class="item featured"><div class="name"><span class="ar">كريب أورو</span><span class="en">ORO Signature Crepe</span></div><div class="price">28<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Pancakes (light) ============ -->
+<section id="pancakes" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">بانكيك ميني</h2>
+        <div class="en-title">MINI PANCAKES</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item featured"><div class="name"><span class="ar">بانكيك أورو</span><span class="en">ORO Pancakes</span></div><div class="price">28<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بانكيك نوتيلا</span><span class="en">Nutella Pancakes</span></div><div class="price">20<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بانكيك فستق</span><span class="en">Pistachio Pancakes</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بانكيك بندق</span><span class="en">Hazelnut Pancakes</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بانكيك لوتس</span><span class="en">Lotus Pancakes</span></div><div class="price">22<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/pancakes.png" alt="Mini pancakes with pistachio cream" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Mini pancakes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Waffles (light) ============ -->
+<section id="waffles" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">وافل ستيك</h2>
+        <div class="en-title">WAFFLE STICK</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/waffle.png" alt="Waffle stick with strawberry and chocolate" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Waffle stick</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">بابل مالح</span><span class="en">Salted Bubble</span></div><div class="price">15<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">نوتيلا</span><span class="en">Nutella</span></div><div class="price">18<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بندق</span><span class="en">Hazelnut</span></div><div class="price">18<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">فستق</span><span class="en">Pistachio</span></div><div class="price">18<span class="unit">LYD</span></div></li>
+          <li class="item featured"><div class="name"><span class="ar">أورو</span><span class="en">ORO Signature</span></div><div class="price">28<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Breakfast (light) ============ -->
+<section id="breakfast" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">إفطار صباحي</h2>
+        <div class="en-title">BREAKFAST</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <div class="subcat ar">قمح — شعير — شوفان · Wheat · Barley · Oat</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">ساندوتش أومليت</span><span class="en">Omelette Sandwich</span></div><div class="price">8<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ساندوتش تن وجبنة</span><span class="en">Tuna &amp; Cheese Sandwich</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+        </ul>
+        <div class="subcat ar">إفطار صباحي صحي · Healthy Breakfast</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">بوكس ساندوتش</span><span class="en">Sandwich Box</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">توست أجبان</span><span class="en">Cheese Toast</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">توست أفوكادو وعسل</span><span class="en">Avocado &amp; Honey Toast</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سميت بالقشطة والعسل</span><span class="en">Simit · Cream &amp; Honey</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سميت أومليت وجبنة</span><span class="en">Simit · Omelette &amp; Cheese</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/breakfast.png" alt="Egg, cheese, and tomato baguette with pickles" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Morning plates</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Croissant (light) ============ -->
+<section id="croissant" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">بريوش</h2>
+        <div class="en-title">CROISSANT</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/croissant.png" alt="Golden croissant with honey drizzle and za'atar" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Buttery &amp; flaky</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">آيس كريم</span><span class="en">Ice Cream</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">فستق</span><span class="en">Pistachio</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">جبنة وعسل وزعتر</span><span class="en">Cheese, Honey &amp; Za'atar</span></div><div class="price">10<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سماش نوتيلا وفراولة</span><span class="en">Smash · Nutella &amp; Strawberry</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سماش بندق</span><span class="en">Smash · Hazelnut</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">سماش فستق</span><span class="en">Smash · Pistachio</span></div><div class="price">12<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ساندوتش</span><span class="en">Sandwich</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Donuts (light) ============ -->
+<section id="donuts" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">دونت</h2>
+        <div class="en-title">DONUTS</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">سادة</span><span class="en">Plain</span></div><div class="price">7<span class="unit">LYD</span></div></li>
+        </ul>
+        <div class="subcat ar">إضافة · Add‑on</div>
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">نوتيلا</span><span class="en">Nutella</span></div><div class="price">+3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">فستق</span><span class="en">Pistachio</span></div><div class="price">+3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كراميل</span><span class="en">Caramel</span></div><div class="price">+3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">مربى</span><span class="en">Jam</span></div><div class="price">+3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بندق</span><span class="en">Hazelnut</span></div><div class="price">+3<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/donuts.png" alt="Two filled donuts on a plate" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Filled donuts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Cinnabon (light) ============ -->
+<section id="cinnabon" class="menu-section light pattern-bg light">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">سينابون</h2>
+        <div class="en-title">CINNABON</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid flip">
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/cinnabon.png" alt="Lotus and Nutella strawberry cinnabon bowls" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Cinnabon bowls</div>
+      </div>
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">نوتيلا</span><span class="en">Nutella</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">فستق</span><span class="en">Pistachio</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كراميل</span><span class="en">Caramel</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">لوتس</span><span class="en">Lotus</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بندق</span><span class="en">Hazelnut</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">توت</span><span class="en">Berry</span></div><div class="price">16<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Hot Appetizers (dark) ============ -->
+<section id="appetizers" class="menu-section dark pattern-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="line"></div>
+      <div class="title-block">
+        <h2 class="ar-title">مقبلات ساخنة</h2>
+        <div class="en-title">HOT APPETIZERS</div>
+      </div>
+      <div class="line right"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="items-cell">
+        <ul class="item-list">
+          <li class="item"><div class="name"><span class="ar">مسخن</span><span class="en">Musakhan</span><span class="note">رول صغير من خبز الصاج محشو بدجاج مطهو مع السماق، الزيتون والبصل.</span></div><div class="price">3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">صفيحة جبنة</span><span class="en">Cheese Sfeeha</span><span class="note">عجينة خفيفة مغطاة بمزيج من الأجبان الغنية، مخبوزة حتى الذوبان.</span></div><div class="price">3<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">صفيحة سبانخ</span><span class="en">Spinach Sfeeha</span><span class="note">عجينة خفيفة محشوة بالسبانخ الطازجة مع الليمون والسماق.</span></div><div class="price">3.5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">صفيحة مفروم</span><span class="en">Minced Meat Sfeeha</span><span class="note">رقاقة عجين مقرمشة، تعلوها طبقة من اللحم المتبل مع البصل والطماطم.</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بوريك جبنة</span><span class="en">Cheese Borek</span><span class="note">أصابع من العجين الهش محشوة بمزيج الأجبان البيضاء والأعشاب.</span></div><div class="price">3.5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بوريك مفروم</span><span class="en">Minced Meat Borek</span><span class="note">طبقات من العجين المقرمش (جلاش) محشوة باللحم المفروم المتبل.</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كرواسون تن</span><span class="en">Tuna Croissant</span><span class="note">كرواسون محشو بالتن المتبل مع الزيتون والأعشاب الساخنة.</span></div><div class="price">3.5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">شاورما دجاج</span><span class="en">Chicken Shawarma</span><span class="note">لفائف صغيرة (ميني) من شاورما الدجاج المتبلة، مع الثومية والمخلل.</span></div><div class="price">4<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ميني بيتزا</span><span class="en">Mini Pizza</span><span class="note">قطع بيتزا صغيرة، مغطاة بصلصة الطماطم وجبنة الموزاريلا.</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">ميني برجر</span><span class="en">Mini Burger</span><span class="note">قطعة صغيرة من لحم البقر المشوي داخل خبز طري، مع جبنة ذائبة.</span></div><div class="price">5.5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بيتزا ملفوفة تن</span><span class="en">Tuna Pizza Roll</span><span class="note">رول من عجينة البيتزا الهشة محشو بالتن الفاخر وصلصة الطماطم.</span></div><div class="price">5.5<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">بيتزا ملفوفة مفروم</span><span class="en">Minced Meat Pizza Roll</span><span class="note">لفائف من العجين الذهبي بداخلها مزيج من اللحم المفروم المتبل.</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">رهيفة دجاج</span><span class="en">Chicken Reheefa</span><span class="note">رول من عجينة البيتزا الهشة محشو بالتن الفاخر، صوص الطماطم، جبنة موزاريلا الساخنة.</span></div><div class="price">7<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">رهيفة مفروم</span><span class="en">Minced Meat Reheefa</span><span class="note">رقاقة عجين مقرمشة ومخبوزة، تعلوها طبقة من اللحم المفروم المتبل.</span></div><div class="price">8<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كرواسون فاهيتا</span><span class="en">Fajita Croissant</span><span class="note">قطع كرواسون صغيرة ومقرمشة، محشوة بدجاج الفاهيتا المتبل مع الفلفل الملون.</span></div><div class="price">7<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كرسبي دجاج</span><span class="en">Crispy Chicken</span><span class="note">قطع دجاج مقرمشة ذهبية من الخارج، طرية من الداخل، متبلة بخلطتنا السرية.</span></div><div class="price">7<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كباب</span><span class="en">Kabab</span><span class="note">قطع كباب صغيرة مشوية على الفحم، متبلة بنكهة غنية ومدخنة.</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">كفتة</span><span class="en">Kofta</span><span class="note">أصابع كفتة مشوية ومتبلة بالبهارات الشرقية والأعشاب.</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+          <li class="item"><div class="name"><span class="ar">تارت دجاج</span><span class="en">Chicken Tart</span><span class="note">طبقات من العجين المقرمش (جلاش) محشوة باللحم المفروم المتبل مع البصل والبهارات.</span></div><div class="price">6<span class="unit">LYD</span></div></li>
+        </ul>
+      </div>
+      <div class="photo-cell">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <div class="frame"><img src="img/appetizers.png" alt="Hot pastries display in bakery case" /></div>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="caption">Hot from the oven</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer pattern-bg">
+  <div class="footer-ornament">· · ·</div>
+  <div class="footer-logo">ORO</div>
+  <div class="footer-sub">SWEETS &amp; PASTRIES</div>
+  <div class="footer-hours">
+    <span>SAT — THU · 8 AM – 11 PM</span>
+    <span class="footer-sep">|</span>
+    <span>FRI · 5 PM – 11 PM</span>
+  </div>
+  <a href="https://www.orosweets.ly" target="_blank" rel="noopener" class="footer-link">WWW.OROSWEETS.LY</a>
+</footer>
+
+<script>
+  // Smooth-scroll with sticky offset
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  // Active category highlight in sticky strip
+  const strip = document.querySelector('.category-scroll');
+  const links = strip ? [...strip.querySelectorAll('a')] : [];
+  const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  let lastIdx = -1;
+  let ticking = false;
+
+  const tick = () => {
+    ticking = false;
+    const y = window.scrollY + 140;
+    let idx = 0;
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i] && sections[i].offsetTop <= y) idx = i;
+    }
+    if (idx === lastIdx) return;
+    if (lastIdx >= 0 && links[lastIdx]) links[lastIdx].classList.remove('active');
+    if (links[idx]) {
+      links[idx].classList.add('active');
+      const linkLeft = links[idx].offsetLeft;
+      const linkRight = linkLeft + links[idx].offsetWidth;
+      const view = strip.scrollLeft;
+      const viewRight = view + strip.clientWidth;
+      if (linkLeft < view + 40 || linkRight > viewRight - 40) {
+        strip.scrollTo({ left: Math.max(0, linkLeft - 40), behavior: 'smooth' });
+      }
+    }
+    lastIdx = idx;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(tick);
+  }, { passive: true });
+
+  tick();
+</script>
+
+</body>
+</html>
