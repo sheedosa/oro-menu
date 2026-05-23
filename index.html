@@ -171,17 +171,63 @@
   }
   .hero-hours strong { color: var(--gold-soft); font-weight: 500; letter-spacing: .18em; }
   .hero-scroll {
-    margin-top: 56px;
-    color: rgba(255,255,255,.5);
-    font-size: 11px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
+    margin-top: 64px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 16px 36px 14px;
+    border: 1px solid rgba(196,163,90,.45);
+    border-radius: 999px;
+    background: rgba(71,21,35,.35);
+    backdrop-filter: blur(2px);
+    transition: background .3s ease, border-color .3s ease, transform .3s ease, color .3s ease;
+    cursor: pointer;
   }
-  .hero-scroll::after {
+  .hero-scroll:hover {
+    background: rgba(196,163,90,.12);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .hero-scroll .scroll-ar {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.1;
+    direction: rtl;
+  }
+  .hero-scroll .scroll-en {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: .35em;
+    opacity: .85;
+  }
+  .hero-scroll .scroll-arrow {
+    width: 1px;
+    height: 22px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin-top: 4px;
+    position: relative;
+  }
+  .hero-scroll .scroll-arrow::after {
     content: '';
-    width: 1px; height: 36px;
-    background: linear-gradient(to bottom, rgba(196,163,90,.7), transparent);
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  @keyframes scrollHint {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: .5; }
+  }
+  .hero-scroll .scroll-arrow {
+    animation: scrollHint 2s ease-in-out infinite;
   }
 
   /* ============ Intro / Story ============ */
@@ -620,9 +666,11 @@
     </picture>
     <div class="arabic-name">حلويات ومخبوزات أورو</div>
     <div class="divider"></div>
-    <div style="margin-top: 56px;">
-      <a href="#menu" class="hero-scroll" style="text-decoration:none;color:inherit;">Explore the menu</a>
-    </div>
+    <a href="#menu" class="hero-scroll">
+      <span class="scroll-ar">تصفح القائمة</span>
+      <span class="scroll-en">EXPLORE THE MENU</span>
+      <span class="scroll-arrow" aria-hidden="true"></span>
+    </a>
   </div>
 </section>
 
