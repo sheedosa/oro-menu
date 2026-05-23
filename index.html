@@ -76,6 +76,18 @@
     text-align: center;
     padding: 80px 0 60px;
     position: relative;
+    overflow: hidden;
+  }
+  /* Drop a hero-bg.jpg into img/ and it appears automatically */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: var(--hero-bg, none);
+    background-size: cover;
+    background-position: center;
+    opacity: .12;
+    z-index: 0;
+    pointer-events: none;
   }
   .hero-content { position: relative; z-index: 2; }
   .hero .eyebrow {
@@ -210,9 +222,12 @@
     transition: color .2s, background .2s;
     white-space: nowrap;
   }
-  .category-scroll a:hover,
-  .category-scroll a.active { color: var(--gold-soft); }
-  .category-scroll a.active { background: rgba(196,163,90,.06); }
+  .category-scroll a:hover { color: var(--gold-soft); }
+  .category-scroll a.active {
+    color: var(--gold);
+    background: rgba(196,163,90,.1);
+    box-shadow: inset 0 -2px 0 var(--gold);
+  }
 
   /* ============ Section base ============ */
   section.menu-section {
@@ -263,7 +278,7 @@
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: start;
   }
   .menu-grid.flip { grid-template-columns: 1fr 1.1fr; }
   .menu-grid.flip .photo-cell { order: 2; }
@@ -271,7 +286,7 @@
   @media (max-width: 860px) {
     .menu-grid, .menu-grid.flip {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 32px;
     }
     .menu-grid .photo-cell, .menu-grid .items-cell { order: initial !important; }
   }
@@ -279,49 +294,63 @@
   /* ============ Photo cell ============ */
   .photo-cell {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 8px 18px 22px;
     isolation: isolate;
   }
   .photo-cell .frame {
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: 4px;
+    aspect-ratio: 4 / 3;
+    flex: 1;
+    min-height: 280px;
   }
   .photo-cell .frame img {
     width: 100%;
+    height: 100%;
     display: block;
-    -webkit-mask-image: radial-gradient(ellipse 92% 94% at center, black 58%, transparent 100%);
-    mask-image: radial-gradient(ellipse 92% 94% at center, black 58%, transparent 100%);
-    filter: drop-shadow(0 24px 40px rgba(0,0,0,.35));
+    object-fit: cover;
+    object-position: center;
+    -webkit-mask-image: radial-gradient(ellipse 95% 96% at center, black 52%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 96% at center, black 52%, transparent 100%);
   }
   section.light .photo-cell .frame img {
-    filter: drop-shadow(0 18px 32px rgba(74, 20, 34, .18));
+    /* no extra filter needed — mask handles the blend */
   }
-  /* Gold corner ornaments */
-  .photo-cell .corner {
+  @media (max-width: 860px) {
+    .photo-cell .frame {
+      aspect-ratio: 16 / 9;
+      min-height: unset;
+      max-height: 260px;
+    }
+  }
+  /* Gold corner ornaments — live inside .frame so they always align with the image edges */
+  .photo-cell .frame .corner {
     position: absolute;
     width: 28px; height: 28px;
     color: var(--gold);
-    opacity: .85;
+    opacity: .9;
     pointer-events: none;
+    z-index: 2;
   }
-  .photo-cell .corner.tl { top: 0; left: 0; border-top: 1px solid currentColor; border-left: 1px solid currentColor; }
-  .photo-cell .corner.tr { top: 0; right: 0; border-top: 1px solid currentColor; border-right: 1px solid currentColor; }
-  .photo-cell .corner.bl { bottom: 14px; left: 0; border-bottom: 1px solid currentColor; border-left: 1px solid currentColor; }
-  .photo-cell .corner.br { bottom: 14px; right: 0; border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; }
-  .photo-cell .corner::after {
+  .photo-cell .frame .corner.tl { top: 10px; left: 10px; border-top: 1px solid currentColor; border-left: 1px solid currentColor; }
+  .photo-cell .frame .corner.tr { top: 10px; right: 10px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; }
+  .photo-cell .frame .corner.bl { bottom: 10px; left: 10px; border-bottom: 1px solid currentColor; border-left: 1px solid currentColor; }
+  .photo-cell .frame .corner.br { bottom: 10px; right: 10px; border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; }
+  .photo-cell .frame .corner::after {
     content: '';
     position: absolute;
-    width: 6px; height: 6px;
+    width: 5px; height: 5px;
     background: currentColor;
     border-radius: 50%;
     opacity: .6;
   }
-  .photo-cell .corner.tl::after { top: -3px; left: -3px; }
-  .photo-cell .corner.tr::after { top: -3px; right: -3px; }
-  .photo-cell .corner.bl::after { bottom: -3px; left: -3px; }
-  .photo-cell .corner.br::after { bottom: -3px; right: -3px; }
+  .photo-cell .frame .corner.tl::after { top: -3px; left: -3px; }
+  .photo-cell .frame .corner.tr::after { top: -3px; right: -3px; }
+  .photo-cell .frame .corner.bl::after { bottom: -3px; left: -3px; }
+  .photo-cell .frame .corner.br::after { bottom: -3px; right: -3px; }
   /* Caption beneath image */
   .photo-cell .caption {
     text-align: center;
@@ -329,7 +358,7 @@
     letter-spacing: .35em;
     font-size: 10px;
     color: var(--gold);
-    margin-top: 16px;
+    margin-top: 14px;
     opacity: .8;
   }
   .photo-cell .caption::before,
@@ -339,8 +368,8 @@
     opacity: .7;
   }
   @media (max-width: 860px) {
-    .photo-cell { padding: 6px 8px 18px; }
-    .photo-cell .corner { width: 22px; height: 22px; }
+    .photo-cell { padding: 4px 6px 14px; }
+    .photo-cell .frame .corner { width: 20px; height: 20px; }
   }
 
   /* ============ Item list ============ */
@@ -395,16 +424,25 @@
   section.light .item .price { color: var(--gold-deep); }
   .item .price .unit { font-size: .65em; opacity: .7; margin-left: 4px; letter-spacing: .12em; }
 
-  /* Featured item with gold highlight */
-  .item.featured .name .ar { color: var(--gold); }
-  section.light .item.featured .name .ar { color: var(--burgundy); }
+  /* Featured / signature item */
   .item.featured {
-    background: linear-gradient(90deg, transparent, rgba(196,163,90,.08) 50%, transparent);
-    padding-inline: 12px;
-    border-radius: 999px;
-    border-bottom: 1px dashed transparent;
-    border-color: transparent;
+    background: linear-gradient(90deg, rgba(196,163,90,.06), rgba(196,163,90,.12) 50%, rgba(196,163,90,.06));
+    padding-inline: 14px;
+    border-radius: 6px;
+    border-bottom-color: transparent;
+    position: relative;
   }
+  .item.featured::before {
+    content: '✦';
+    position: absolute;
+    left: -2px;
+    top: 50%; transform: translateY(-50%);
+    font-size: 8px;
+    color: var(--gold);
+    opacity: .8;
+  }
+  .item.featured .name .ar { color: var(--gold); font-weight: 600; }
+  section.light .item.featured .name .ar { color: var(--burgundy-deep); font-weight: 700; }
 
   /* Subcategory tag */
   .subcat {
@@ -511,6 +549,7 @@
 <body>
 
 <!-- ============ Hero ============ -->
+<!-- To add a background image: set style="--hero-bg: url('img/hero-bg.jpg')" below -->
 <section id="top" class="hero pattern-bg">
   <div class="hero-content container">
     <div class="eyebrow">EST. LIBYA</div>
@@ -574,9 +613,7 @@
     </div>
     <div class="menu-grid">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/hot-drinks.png" alt="Hot drinks in ORO branded cups" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/hot-drinks.png" alt="Hot drinks in ORO branded cups" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Brewed in‑house</div>
       </div>
       <div class="items-cell">
@@ -601,9 +638,7 @@
   <div class="container">
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/tea-chocolate.png" alt="Hot chocolate with pistachio and toppings" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/tea-chocolate.png" alt="Hot chocolate with pistachio and toppings" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Tea &amp; chocolate</div>
       </div>
       <div class="items-cell">
@@ -653,9 +688,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/cold-drinks.png" alt="Cold canned drinks and water bottle" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/cold-drinks.png" alt="Cold canned drinks and water bottle" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Chilled &amp; fizzy</div>
       </div>
     </div>
@@ -675,9 +708,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/iced-coffee.png" alt="Row of iced coffee drinks in ORO cups" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/iced-coffee.png" alt="Row of iced coffee drinks in ORO cups" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Iced coffee bar</div>
       </div>
       <div class="items-cell">
@@ -721,9 +752,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/milkshake.png" alt="ORO milkshake cup with cat-ear lid" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/milkshake.png" alt="ORO milkshake cup with cat-ear lid" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Hand‑shaken</div>
       </div>
     </div>
@@ -743,9 +772,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/juice.png" alt="ORO branded fresh juice bottles" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/juice.png" alt="ORO branded fresh juice bottles" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Cold‑pressed daily</div>
       </div>
       <div class="items-cell">
@@ -789,9 +816,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/smoothie.png" alt="ORO smoothie bottles" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/smoothie.png" alt="ORO smoothie bottles" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Fresh fruit blends</div>
       </div>
     </div>
@@ -811,9 +836,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/mojito.png" alt="Colorful ORO mojito drinks on pedestals" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/mojito.png" alt="Colorful ORO mojito drinks on pedestals" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Mojito collection</div>
       </div>
       <div class="items-cell">
@@ -864,9 +887,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/cookies.png" alt="Chocolate hazelnut and pistachio cookie stacks" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/cookies.png" alt="Chocolate hazelnut and pistachio cookie stacks" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Baked this morning</div>
       </div>
     </div>
@@ -886,9 +907,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/crepe.png" alt="Crepe with chocolate, pistachio, and strawberry" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/crepe.png" alt="Crepe with chocolate, pistachio, and strawberry" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Sweet crepes</div>
       </div>
       <div class="items-cell">
@@ -924,9 +943,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/pancakes.png" alt="Mini pancakes with pistachio cream" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/pancakes.png" alt="Mini pancakes with pistachio cream" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Mini pancakes</div>
       </div>
     </div>
@@ -946,9 +963,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/waffle.png" alt="Waffle stick with strawberry and chocolate" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/waffle.png" alt="Waffle stick with strawberry and chocolate" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Waffle stick</div>
       </div>
       <div class="items-cell">
@@ -992,9 +1007,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/breakfast.png" alt="Egg, cheese, and tomato baguette with pickles" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/breakfast.png" alt="Egg, cheese, and tomato baguette with pickles" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Morning plates</div>
       </div>
     </div>
@@ -1014,9 +1027,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/croissant.png" alt="Golden croissant with honey drizzle and za'atar" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/croissant.png" alt="Golden croissant with honey drizzle and za'atar" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Buttery &amp; flaky</div>
       </div>
       <div class="items-cell">
@@ -1060,9 +1071,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/donuts.png" alt="Two filled donuts on a plate" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/donuts.png" alt="Two filled donuts on a plate" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Filled donuts</div>
       </div>
     </div>
@@ -1082,9 +1091,7 @@
     </div>
     <div class="menu-grid flip">
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/cinnabon.png" alt="Lotus and Nutella strawberry cinnabon bowls" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/cinnabon.png" alt="Lotus and Nutella strawberry cinnabon bowls" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Cinnabon bowls</div>
       </div>
       <div class="items-cell">
@@ -1137,9 +1144,7 @@
         </ul>
       </div>
       <div class="photo-cell">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <div class="frame"><img src="img/appetizers.png" alt="Hot pastries display in bakery case" /></div>
-        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="frame"><img src="img/appetizers.png" alt="Hot pastries display in bakery case" /><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
         <div class="caption">Hot from the oven</div>
       </div>
     </div>
