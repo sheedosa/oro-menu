@@ -117,12 +117,20 @@
   .hero .logo {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    font-size: clamp(96px, 22vw, 240px);
-    line-height: 1;
+    font-size: clamp(80px, 16vw, 180px);
+    line-height: 1.1;
     color: var(--gold);
     letter-spacing: .04em;
     display: inline-block;
     position: relative;
+    padding-top: .08em;
+  }
+  /* If a logo image is dropped at img/logo.png it auto-replaces the text */
+  .hero .logo-img {
+    display: block;
+    max-width: min(560px, 80vw);
+    height: auto;
+    margin: 0 auto;
   }
   .hero .logo .swash {
     display: inline-block;
@@ -604,8 +612,12 @@
 <section id="top" class="hero pattern-bg">
   <div class="hero-content container">
     <div class="eyebrow">EST. LIBYA</div>
-    <div class="logo">OR<span class="swash">O</span></div>
-    <div class="tagline">Sweets &amp; Pastries</div>
+    <picture>
+      <source srcset="img/logo.webp" type="image/webp" />
+      <img src="img/logo.png" alt="ORO Sweets &amp; Pastries"
+           class="logo-img"
+           onerror="this.parentElement.outerHTML='&lt;div class=&quot;logo&quot;&gt;OR&lt;span class=&quot;swash&quot;&gt;O&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;tagline&quot;&gt;Sweets &amp;amp; Pastries&lt;/div&gt;'" />
+    </picture>
     <div class="arabic-name">حلويات ومخبوزات أورو</div>
     <div class="divider"></div>
     <div style="margin-top: 56px;">
