@@ -215,12 +215,60 @@
     border-bottom: 1px solid rgba(196,163,90,.18);
     position: sticky; top: 0; z-index: 40;
   }
+  .category-strip .container {
+    position: relative;
+  }
+  /* Edge gradient fades — visual cue that more content scrolls beyond view */
+  .category-strip .container::before,
+  .category-strip .container::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 42px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .category-strip .container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--burgundy-deep) 20%, transparent);
+  }
+  .category-strip .container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--burgundy-deep) 20%, transparent);
+  }
+  .category-strip.can-scroll-left .container::before { opacity: 1; }
+  .category-strip.can-scroll-right .container::after { opacity: 1; }
+  /* Chevron indicators inside the fade gradient */
+  .category-strip .chevron {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 18px;
+    line-height: 1;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .category-strip .chevron.left { left: 8px; }
+  .category-strip .chevron.right { right: 8px; }
+  .category-strip.can-scroll-left .chevron.left { opacity: .85; }
+  .category-strip.can-scroll-right .chevron.right { opacity: .85; }
   .category-scroll {
     display: flex; gap: 0;
     overflow-x: auto;
     scroll-snap-type: x proximity;
     scrollbar-width: none;
     padding: 0;
+    scroll-behavior: smooth;
   }
   .category-scroll::-webkit-scrollbar { display: none; }
   .category-scroll a {
@@ -585,6 +633,8 @@
       <a href="#cinnabon"><span class="nav-ar">سينابون</span><span class="nav-en">Cinnabon</span></a>
       <a href="#appetizers"><span class="nav-ar">مقبلات ساخنة</span><span class="nav-en">Hot Appetizers</span></a>
     </nav>
+    <span class="chevron left" aria-hidden="true">‹</span>
+    <span class="chevron right" aria-hidden="true">›</span>
   </div>
 </div>
 
@@ -1203,6 +1253,40 @@
   }, { passive: true });
 
   tick();
+
+  // Scroll-affordance: toggle edge fades + chevrons based on category-scroll position
+  const stripWrap = document.querySelector('.category-strip');
+  if (strip && stripWrap) {
+    const updateAffordance = () => {
+      const canLeft = strip.scrollLeft > 4;
+      const canRight = strip.scrollLeft + strip.clientWidth < strip.scrollWidth - 4;
+      stripWrap.classList.toggle('can-scroll-left', canLeft);
+      stripWrap.classList.toggle('can-scroll-right', canRight);
+    };
+    strip.addEventListener('scroll', updateAffordance, { passive: true });
+    window.addEventListener('resize', updateAffordance);
+    updateAffordance();
+
+    // One-time auto-scroll hint on page load (only if there's right overflow)
+    if (!sessionStorage.getItem('oroNavHinted') && strip.scrollWidth > strip.clientWidth) {
+      sessionStorage.setItem('oroNavHinted', '1');
+      setTimeout(() => {
+        const original = strip.scrollLeft;
+        strip.scrollTo({ left: original + 70, behavior: 'smooth' });
+        setTimeout(() => strip.scrollTo({ left: original, behavior: 'smooth' }), 650);
+      }, 1000);
+    }
+
+    // Allow tapping chevrons to scroll
+    document.querySelectorAll('.category-strip .chevron').forEach(ch => {
+      ch.style.pointerEvents = 'auto';
+      ch.style.cursor = 'pointer';
+      ch.addEventListener('click', () => {
+        const dir = ch.classList.contains('right') ? 1 : -1;
+        strip.scrollBy({ left: dir * strip.clientWidth * 0.6, behavior: 'smooth' });
+      });
+    });
+  }
 </script>
 
 </body>
