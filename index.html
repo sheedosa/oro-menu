@@ -425,10 +425,16 @@
     transition: transform 0.5s ease;
     border-radius: 12px;
   }
-  /* Video-only: feather edges so cups look like they sit straight on the menu */
+  /* Video-only: feather edges on all sides so cups float on the menu */
   .photo-cell .frame video {
-    -webkit-mask-image: radial-gradient(ellipse 80% 80% at center, #000 30%, transparent 100%);
-    mask-image: radial-gradient(ellipse 80% 80% at center, #000 30%, transparent 100%);
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 12%, #000 65%, transparent 92%),
+      linear-gradient(to right,  transparent 0%, #000 8%,  #000 92%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 12%, #000 65%, transparent 92%),
+      linear-gradient(to right,  transparent 0%, #000 8%,  #000 92%, transparent 100%);
+    mask-composite: intersect;
     border-radius: 0;
   }
   @media (max-width: 860px) {
