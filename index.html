@@ -415,19 +415,23 @@
     align-items: center;
     justify-content: center;
   }
-  .photo-cell .frame img {
+  .photo-cell .frame img,
+  .photo-cell .frame video {
     width: 100%;
     height: auto;
     max-height: 520px;
     display: block;
     object-fit: contain;
     transition: transform 0.5s ease;
+    border-radius: 12px;
   }
   @media (max-width: 860px) {
     .photo-cell { max-width: 100%; }
-    .photo-cell .frame img { max-height: 360px; }
+    .photo-cell .frame img,
+    .photo-cell .frame video { max-height: 360px; }
   }
-  .photo-cell .frame:hover img {
+  .photo-cell .frame:hover img,
+  .photo-cell .frame:hover video {
     transform: scale(1.04);
   }
   /* Caption beneath image */
@@ -688,7 +692,7 @@
     </div>
     <div class="menu-grid">
       <div class="photo-cell">
-        <div class="frame"><picture><source srcset="img/hot-drinks.webp" type="image/webp" /><img src="img/hot-drinks.png" alt="Hot drinks in ORO branded cups" loading="lazy" decoding="async" width="900" height="431" /></picture></div>
+        <div class="frame"><video src="img/hot-drinks.mp4" poster="img/hot-drinks-poster.jpg" autoplay loop muted playsinline preload="metadata" width="640" height="640" aria-label="Hot drinks in ORO branded cups"></video></div>
         <div class="caption">Brewed in‑house</div>
       </div>
       <div class="items-cell">
