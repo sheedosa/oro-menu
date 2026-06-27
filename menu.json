@@ -1,0 +1,547 @@
+{
+  "nav": [
+    { "href": "hot-drinks", "ar": "مشروبات ساخنة", "en": "Hot Drinks" },
+    { "href": "cold-drinks", "ar": "مشروبات باردة", "en": "Cold Drinks" },
+    { "href": "iced-coffee", "ar": "قهوة باردة", "en": "Iced Coffee" },
+    { "href": "milkshakes", "ar": "ميلك شيك", "en": "Milkshakes" },
+    { "href": "juices", "ar": "عصائر طبيعية", "en": "Fresh Juices" },
+    { "href": "smoothies", "ar": "سموذي", "en": "Smoothies" },
+    { "href": "mojitos", "ar": "موخيتو", "en": "Mojitos" },
+    { "href": "cookies", "ar": "كوكيز", "en": "Cookies" },
+    { "href": "crepes", "ar": "كريب حلو", "en": "Sweet Crepes" },
+    { "href": "pancakes", "ar": "بانكيك ميني", "en": "Pancakes" },
+    { "href": "waffles", "ar": "وافل ستيك", "en": "Waffles" },
+    { "href": "breakfast", "ar": "إفطار صباحي", "en": "Breakfast" },
+    { "href": "croissant", "ar": "بريوش", "en": "Croissant" },
+    { "href": "donuts", "ar": "دونت", "en": "Donuts" },
+    { "href": "cinnabon", "ar": "سينابون", "en": "Cinnabon" },
+    { "href": "appetizers", "ar": "مقبلات ساخنة", "en": "Hot Appetizers" }
+  ],
+  "sections": [
+    {
+      "id": "hot-drinks",
+      "theme": "dark",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "مشروبات ساخنة", "en": "HOT DRINKS" },
+      "media": {
+        "type": "video",
+        "base": "hot-drinks",
+        "poster": "hot-drinks-poster",
+        "alt": "Hot drinks in ORO branded cups",
+        "caption": "Brewed in‑house",
+        "width": 640,
+        "height": 640
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "فلات وايت", "en": "Flat White", "price": "5" },
+            { "ar": "إسبريسو", "en": "Espresso", "note": "دبل + 2 د.ل · Double +2", "price": "4" },
+            { "ar": "مكياطة", "en": "Macchiato", "note": "دبل + 2 د.ل · Double +2", "price": "5" },
+            { "ar": "أمريكانو", "en": "Americano", "note": "دبل + 3 د.ل · Double +3", "price": "5" },
+            { "ar": "كابتشينو", "en": "Cappuccino", "note": "دبل + 3 د.ل · Double +3", "price": "6" },
+            { "ar": "كافيه لاتيه", "en": "Café Latte", "note": "دبل + 3 د.ل · Double +3", "price": "6" },
+            { "ar": "نسكافيه", "en": "Nescafé", "note": "دبل + 2 · محلى + 2 د.ل", "price": "5" },
+            { "ar": "قهوة عربية", "en": "Arabic Coffee", "price": "6" },
+            { "ar": "سبسيال", "en": "Special", "note": "دبل + 2 د.ل · Double +2", "price": "6" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tea",
+      "theme": "dark",
+      "flip": true,
+      "showHead": false,
+      "media": {
+        "type": "image",
+        "base": "tea-chocolate",
+        "alt": "Hot chocolate with pistachio and toppings",
+        "caption": "Tea & chocolate",
+        "width": 988,
+        "height": 743
+      },
+      "groups": [
+        {
+          "subcatAr": "شاي أحمر",
+          "subcatEn": "Red Tea",
+          "items": [
+            { "ar": "ليبتون", "en": "Lipton", "price": "3" },
+            { "ar": "شاي تونسي", "en": "Tunisian Tea", "price": "4" }
+          ]
+        },
+        {
+          "subcatAr": "شاي أخضر",
+          "subcatEn": "Green Tea",
+          "items": [
+            { "ar": "ليبتون", "en": "Lipton", "price": "3" },
+            { "ar": "شاي تونسي", "en": "Tunisian Tea", "price": "4" }
+          ]
+        },
+        {
+          "subcatAr": "هوت شوكليت",
+          "subcatEn": "Hot Chocolate",
+          "items": [
+            { "ar": "هوت شوكليت بالمكسرات", "en": "Hot Chocolate with Nuts", "price": "12" },
+            { "ar": "هوت شوكليت تيراميسو", "en": "Hot Chocolate Tiramisu", "price": "14" }
+          ]
+        },
+        {
+          "subcatAr": "سنترا",
+          "subcatEn": "Sentra",
+          "items": [
+            { "ar": "سنترا — صغير", "en": "Sentra — Small", "price": "10" },
+            { "ar": "سنترا — كبير", "en": "Sentra — Large", "price": "18" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cold-drinks",
+      "theme": "dark",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "مشروبات باردة", "en": "COLD DRINKS" },
+      "media": {
+        "type": "image",
+        "base": "cold-drinks",
+        "alt": "Cold canned drinks and water bottle",
+        "caption": "Chilled & fizzy",
+        "width": 936,
+        "height": 523
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "مياه (500 مل)", "en": "Water · 500 ml", "price": "1" },
+            { "ar": "مشروب غازي", "en": "Soft Drink", "price": "4" },
+            { "ar": "ماكس فلاي", "en": "Max Fly", "price": "5" },
+            { "ar": "ريد بول", "en": "Red Bull", "price": "12" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iced-coffee",
+      "theme": "dark",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "قهوة باردة", "en": "ICED COFFEE" },
+      "media": {
+        "type": "image",
+        "base": "iced-coffee",
+        "alt": "Row of iced coffee drinks in ORO cups",
+        "caption": "Iced coffee bar",
+        "width": 900,
+        "height": 542
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "آيس أمريكانو", "en": "Iced Americano", "price": "15" },
+            { "ar": "آيس لاتيه", "en": "Iced Latte", "price": "18" },
+            { "ar": "آيس سبانيش لاتيه", "en": "Iced Spanish Latte", "price": "20" },
+            { "ar": "آيس موكا ماكياتو", "en": "Iced Mocha Macchiato", "price": "20" },
+            { "ar": "آيس كراميل ماكياتو", "en": "Iced Caramel Macchiato", "price": "20" },
+            { "ar": "آيس موكا كراميل", "en": "Iced Mocha Caramel", "price": "20" },
+            { "ar": "آيس موكا بستاشيو", "en": "Iced Pistachio Mocha", "price": "20" },
+            { "ar": "آيس موكا فراولة", "en": "Iced Strawberry Mocha", "price": "20" },
+            { "ar": "آيس وايت موكا فرابتشينو", "en": "Iced White Mocha Frappé", "price": "20" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "milkshakes",
+      "theme": "light",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "ميلك شيك", "en": "MILKSHAKES" },
+      "media": {
+        "type": "image",
+        "base": "milkshake",
+        "alt": "ORO milkshake cup with cat-ear lid",
+        "caption": "Hand‑shaken",
+        "width": 530,
+        "height": 900
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "أوريو", "en": "Oreo", "price": "20" },
+            { "ar": "مانجو", "en": "Mango", "price": "20" },
+            { "ar": "فراولة", "en": "Strawberry", "price": "20" },
+            { "ar": "نوتيلا", "en": "Nutella", "price": "20" },
+            { "ar": "لوتس", "en": "Lotus", "price": "20" },
+            { "ar": "بندق", "en": "Hazelnut", "price": "20" },
+            { "ar": "فستق", "en": "Pistachio", "price": "20" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "juices",
+      "theme": "dark",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "عصائر طبيعية", "en": "FRESH JUICES" },
+      "media": {
+        "type": "image",
+        "base": "juice",
+        "alt": "ORO branded fresh juice bottles",
+        "caption": "Cold‑pressed daily",
+        "width": 638,
+        "height": 900
+      },
+      "sizeRow": { "smallAr": "صغير", "smallEn": "SMALL", "largeAr": "كبير", "largeEn": "LARGE" },
+      "groups": [
+        {
+          "items": [
+            { "twoPrice": true, "ar": "ليمون ونعناع", "en": "Lemon & Mint", "priceSmall": "8", "priceLarge": "22" },
+            { "twoPrice": true, "ar": "فراولة", "en": "Strawberry", "priceSmall": "8", "priceLarge": "22" },
+            { "twoPrice": true, "ar": "مانجو", "en": "Mango", "priceSmall": "8", "priceLarge": "22" },
+            { "twoPrice": true, "ar": "جوافة", "en": "Guava", "priceSmall": "8", "priceLarge": "22" },
+            { "twoPrice": true, "ar": "كوكتيل", "en": "Cocktail", "priceSmall": "9", "priceLarge": "24" },
+            { "twoPrice": true, "ar": "برتقال", "en": "Orange", "priceSmall": "10", "priceLarge": "25" },
+            { "twoPrice": true, "ar": "تمر باللوز", "en": "Date with Almond", "priceSmall": "10", "priceLarge": "25" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "smoothies",
+      "theme": "dark",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "سموذي", "en": "SMOOTHIES" },
+      "media": {
+        "type": "image",
+        "base": "smoothie",
+        "alt": "ORO smoothie bottles",
+        "caption": "Fresh fruit blends",
+        "width": 689,
+        "height": 899
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "مانجو", "en": "Mango", "price": "9" },
+            { "ar": "جوافة وكرز", "en": "Guava & Cherry", "price": "9" },
+            { "ar": "جوافة بلو", "en": "Blue Guava", "price": "9" },
+            { "ar": "كوكتيل", "en": "Cocktail", "price": "9" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mojitos",
+      "theme": "light",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "موخيتو", "en": "MOJITOS" },
+      "media": {
+        "type": "image",
+        "base": "mojito",
+        "alt": "Colorful ORO mojito drinks on pedestals",
+        "caption": "Mojito collection",
+        "width": 900,
+        "height": 387
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "رمان", "en": "Pomegranate", "price": "15" },
+            { "ar": "بلو كوراساو", "en": "Blue Curaçao", "price": "15" },
+            { "ar": "علكة مارشميلو", "en": "Marshmallow Bubble", "price": "15" },
+            { "ar": "بلو أورانج", "en": "Blue Orange", "price": "15" },
+            { "ar": "مانجو", "en": "Mango", "price": "15" },
+            { "ar": "غلال الغابة", "en": "Forest Berries", "price": "15" },
+            { "ar": "ريد بول", "en": "Red Bull", "price": "15" },
+            { "ar": "بلو بيري", "en": "Blueberry", "price": "15" },
+            { "featured": true, "ar": "فراولة — بابل", "en": "Strawberry · Bubble", "price": "20" },
+            { "featured": true, "ar": "أناناس — بابل", "en": "Pineapple · Bubble", "price": "20" },
+            { "featured": true, "ar": "بطيخ — بابل", "en": "Watermelon · Bubble", "price": "20" },
+            { "featured": true, "ar": "باشن فروت — بابل", "en": "Passion Fruit · Bubble", "price": "20" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cookies",
+      "theme": "dark",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "كوكيز", "en": "COOKIES" },
+      "media": {
+        "type": "image",
+        "base": "cookies",
+        "alt": "Chocolate hazelnut and pistachio cookie stacks",
+        "caption": "Baked this morning",
+        "width": 917,
+        "height": 706
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "نوتيلا وبندق", "en": "Nutella & Hazelnut", "price": "10" },
+            { "ar": "شوكلت تشيبس", "en": "Chocolate Chips", "price": "10" },
+            { "ar": "شوكلاتة", "en": "Chocolate", "price": "12" },
+            { "ar": "كوكيز دبي", "en": "Dubai Cookies", "price": "12" },
+            { "ar": "نوتيلا", "en": "Nutella", "price": "12" },
+            { "ar": "بستاشيو", "en": "Pistachio", "price": "12" }
+          ]
+        },
+        {
+          "subcatAr": "علبة — 8 قطع",
+          "subcatEn": "Box of 8",
+          "items": [
+            { "ar": "علبة كوكيز شوكلاتة", "en": "Chocolate Cookie Box", "price": "20" },
+            { "ar": "علبة كوكيز بستاشيو", "en": "Pistachio Cookie Box", "price": "20" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepes",
+      "theme": "light",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "كريب حلو", "en": "SWEET CREPES" },
+      "media": {
+        "type": "image",
+        "base": "crepe",
+        "alt": "Crepe with chocolate, pistachio, and strawberry",
+        "caption": "Sweet crepes",
+        "width": 900,
+        "height": 628
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "كريب نوتيلا", "en": "Nutella Crepe", "price": "20" },
+            { "ar": "كريب كلاسيك", "en": "Classic Crepe", "price": "24" },
+            { "featured": true, "ar": "كريب أورو", "en": "ORO Signature Crepe", "price": "28" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pancakes",
+      "theme": "light",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "بانكيك ميني", "en": "MINI PANCAKES" },
+      "media": {
+        "type": "image",
+        "base": "pancakes",
+        "alt": "Mini pancakes with pistachio cream",
+        "caption": "Mini pancakes",
+        "width": 900,
+        "height": 631
+      },
+      "groups": [
+        {
+          "items": [
+            { "featured": true, "ar": "بانكيك أورو", "en": "ORO Pancakes", "price": "28" },
+            { "ar": "بانكيك نوتيلا", "en": "Nutella Pancakes", "price": "20" },
+            { "ar": "بانكيك فستق", "en": "Pistachio Pancakes", "price": "22" },
+            { "ar": "بانكيك بندق", "en": "Hazelnut Pancakes", "price": "22" },
+            { "ar": "بانكيك لوتس", "en": "Lotus Pancakes", "price": "22" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "waffles",
+      "theme": "light",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "وافل ستيك", "en": "WAFFLE STICK" },
+      "media": {
+        "type": "image",
+        "base": "waffle",
+        "alt": "Waffle stick with strawberry and chocolate",
+        "caption": "Waffle stick",
+        "width": 900,
+        "height": 636
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "بابل مالح", "en": "Salted Bubble", "price": "15" },
+            { "ar": "نوتيلا", "en": "Nutella", "price": "18" },
+            { "ar": "بندق", "en": "Hazelnut", "price": "18" },
+            { "ar": "فستق", "en": "Pistachio", "price": "18" },
+            { "featured": true, "ar": "أورو", "en": "ORO Signature", "price": "28" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breakfast",
+      "theme": "light",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "إفطار صباحي", "en": "BREAKFAST" },
+      "media": {
+        "type": "image",
+        "base": "breakfast",
+        "alt": "Egg, cheese, and tomato baguette with pickles",
+        "caption": "Morning plates",
+        "width": 900,
+        "height": 732
+      },
+      "groups": [
+        {
+          "subcatAr": "قمح — شعير — شوفان",
+          "subcatEn": "Wheat · Barley · Oat",
+          "items": [
+            { "ar": "ساندوتش أومليت", "en": "Omelette Sandwich", "price": "8" },
+            { "ar": "ساندوتش تن وجبنة", "en": "Tuna & Cheese Sandwich", "price": "10" }
+          ]
+        },
+        {
+          "subcatAr": "إفطار صباحي صحي",
+          "subcatEn": "Healthy Breakfast",
+          "items": [
+            { "ar": "بوكس ساندوتش", "en": "Sandwich Box", "price": "12" },
+            { "ar": "توست أجبان", "en": "Cheese Toast", "price": "16" },
+            { "ar": "توست أفوكادو وعسل", "en": "Avocado & Honey Toast", "price": "16" },
+            { "ar": "سميت بالقشطة والعسل", "en": "Simit · Cream & Honey", "price": "16" },
+            { "ar": "سميت أومليت وجبنة", "en": "Simit · Omelette & Cheese", "price": "16" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "croissant",
+      "theme": "light",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "بريوش", "en": "CROISSANT" },
+      "media": {
+        "type": "image",
+        "base": "croissant",
+        "alt": "Golden croissant with honey drizzle and za'atar",
+        "caption": "Buttery & flaky",
+        "width": 900,
+        "height": 830
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "آيس كريم", "en": "Ice Cream", "price": "10" },
+            { "ar": "فستق", "en": "Pistachio", "price": "10" },
+            { "ar": "جبنة وعسل وزعتر", "en": "Cheese, Honey & Za'atar", "price": "10" },
+            { "ar": "سماش نوتيلا وفراولة", "en": "Smash · Nutella & Strawberry", "price": "12" },
+            { "ar": "سماش بندق", "en": "Smash · Hazelnut", "price": "12" },
+            { "ar": "سماش فستق", "en": "Smash · Pistachio", "price": "12" },
+            { "ar": "ساندوتش", "en": "Sandwich", "price": "16" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "donuts",
+      "theme": "light",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "دونت", "en": "DONUTS" },
+      "media": {
+        "type": "image",
+        "base": "donuts",
+        "alt": "Two filled donuts on a plate",
+        "caption": "Filled donuts",
+        "width": 900,
+        "height": 640
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "سادة", "en": "Plain", "price": "7" }
+          ]
+        },
+        {
+          "subcatAr": "إضافة",
+          "subcatEn": "Add‑on",
+          "items": [
+            { "ar": "نوتيلا", "en": "Nutella", "price": "+3" },
+            { "ar": "فستق", "en": "Pistachio", "price": "+3" },
+            { "ar": "كراميل", "en": "Caramel", "price": "+3" },
+            { "ar": "مربى", "en": "Jam", "price": "+3" },
+            { "ar": "بندق", "en": "Hazelnut", "price": "+3" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cinnabon",
+      "theme": "light",
+      "flip": true,
+      "showHead": true,
+      "title": { "ar": "سينابون", "en": "CINNABON" },
+      "media": {
+        "type": "image",
+        "base": "cinnabon",
+        "alt": "Lotus and Nutella strawberry cinnabon bowls",
+        "caption": "Cinnabon bowls",
+        "width": 991,
+        "height": 460
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "نوتيلا", "en": "Nutella", "price": "16" },
+            { "ar": "فستق", "en": "Pistachio", "price": "16" },
+            { "ar": "كراميل", "en": "Caramel", "price": "16" },
+            { "ar": "لوتس", "en": "Lotus", "price": "16" },
+            { "ar": "بندق", "en": "Hazelnut", "price": "16" },
+            { "ar": "توت", "en": "Berry", "price": "16" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "appetizers",
+      "theme": "dark",
+      "flip": false,
+      "showHead": true,
+      "title": { "ar": "مقبلات ساخنة", "en": "HOT APPETIZERS" },
+      "media": {
+        "type": "image",
+        "base": "appetizers",
+        "alt": "Hot pastries display in bakery case",
+        "caption": "Hot from the oven",
+        "width": 729,
+        "height": 899
+      },
+      "groups": [
+        {
+          "items": [
+            { "ar": "مسخن", "en": "Musakhan", "note": "رول صغير من خبز الصاج محشو بدجاج مطهو مع السماق، الزيتون والبصل.", "price": "3" },
+            { "ar": "صفيحة جبنة", "en": "Cheese Sfeeha", "note": "عجينة خفيفة مغطاة بمزيج من الأجبان الغنية، مخبوزة حتى الذوبان.", "price": "3" },
+            { "ar": "صفيحة سبانخ", "en": "Spinach Sfeeha", "note": "عجينة خفيفة محشوة بالسبانخ الطازجة مع الليمون والسماق.", "price": "3.5" },
+            { "ar": "صفيحة سبانخ وجبنة", "en": "Spinach & Cheese Sfeeha", "note": "عجينة خفيفة محشوة بالسبانخ الطازجة مع مزيج الأجبان البيضاء.", "price": "3" },
+            { "ar": "صفيحة مفروم", "en": "Minced Meat Sfeeha", "note": "رقاقة عجين مقرمشة، تعلوها طبقة من اللحم المتبل مع البصل والطماطم.", "price": "4" },
+            { "ar": "بوريك جبنة", "en": "Cheese Borek", "note": "أصابع من العجين الهش محشوة بمزيج الأجبان البيضاء والأعشاب.", "price": "3.5" },
+            { "ar": "بوريك مفروم", "en": "Minced Meat Borek", "note": "طبقات من العجين المقرمش (جلاش) محشوة باللحم المفروم المتبل.", "price": "4" },
+            { "ar": "كرواسون تن", "en": "Tuna Croissant", "note": "كرواسون محشو بالتن المتبل مع الزيتون والأعشاب الساخنة.", "price": "3.5" },
+            { "ar": "شاورما دجاج", "en": "Chicken Shawarma", "note": "لفائف صغيرة (ميني) من شاورما الدجاج المتبلة، مع الثومية والمخلل.", "price": "4" },
+            { "ar": "ميني بيتزا", "en": "Mini Pizza", "note": "قطع بيتزا صغيرة، مغطاة بصلصة الطماطم وجبنة الموزاريلا.", "price": "6" },
+            { "ar": "ميني برجر", "en": "Mini Burger", "note": "قطعة صغيرة من لحم البقر المشوي داخل خبز طري، مع جبنة ذائبة.", "price": "5.5" },
+            { "ar": "بيتزا ملفوفة تن", "en": "Tuna Pizza Roll", "note": "رول من عجينة البيتزا الهشة محشو بالتن الفاخر وصلصة الطماطم.", "price": "5.5" },
+            { "ar": "بيتزا ملفوفة مفروم", "en": "Minced Meat Pizza Roll", "note": "لفائف من العجين الذهبي بداخلها مزيج من اللحم المفروم المتبل.", "price": "6" },
+            { "ar": "رهيفة دجاج", "en": "Chicken Reheefa", "note": "رول من عجينة البيتزا الهشة محشو بالتن الفاخر، صوص الطماطم، جبنة موزاريلا الساخنة.", "price": "7" },
+            { "ar": "رهيفة مفروم", "en": "Minced Meat Reheefa", "note": "رقاقة عجين مقرمشة ومخبوزة، تعلوها طبقة من اللحم المفروم المتبل.", "price": "8" },
+            { "ar": "كرواسون فاهيتا", "en": "Fajita Croissant", "note": "قطع كرواسون صغيرة ومقرمشة، محشوة بدجاج الفاهيتا المتبل مع الفلفل الملون.", "price": "7" },
+            { "ar": "كرسبي دجاج", "en": "Crispy Chicken", "note": "قطع دجاج مقرمشة ذهبية من الخارج، طرية من الداخل، متبلة بخلطتنا السرية.", "price": "7" },
+            { "ar": "كباب", "en": "Kabab", "note": "قطع كباب صغيرة مشوية على الفحم، متبلة بنكهة غنية ومدخنة.", "price": "6" },
+            { "ar": "كفتة", "en": "Kofta", "note": "أصابع كفتة مشوية ومتبلة بالبهارات الشرقية والأعشاب.", "price": "6" },
+            { "ar": "تارت دجاج", "en": "Chicken Tart", "note": "طبقات من العجين المقرمش (جلاش) محشوة باللحم المفروم المتبل مع البصل والبهارات.", "price": "6" }
+          ]
+        }
+      ]
+    }
+  ]
+}

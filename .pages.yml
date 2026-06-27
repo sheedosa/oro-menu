@@ -1,0 +1,89 @@
+# Pages CMS config — https://pagescms.org
+# The café owner edits menu.json through a form at app.pagescms.org.
+# Saving commits to GitHub; the live GitHub Pages site updates automatically.
+
+media:
+  input: img        # folder in the repo where photos live
+  output: /img      # path written into menu.json (menu.js normalises this)
+
+content:
+  - name: menu
+    label: Menu
+    type: file
+    path: menu.json
+    fields:
+      - name: nav
+        label: Top Navigation
+        description: The pills in the sticky bar. One per section you want linked (Tea is intentionally left out).
+        type: object
+        list: true
+        fields:
+          - { name: href, label: "Section ID (e.g. hot-drinks)", type: string }
+          - { name: ar, label: "Arabic label", type: string }
+          - { name: en, label: "English label", type: string }
+
+      - name: sections
+        label: Menu Sections
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "Section ID (URL-safe, unique)", type: string }
+          - name: theme
+            label: "Background theme"
+            type: select
+            options: { values: [dark, light] }
+            default: dark
+          - { name: flip, label: "Flip layout", type: boolean, default: false }
+          - { name: showHead, label: "Show section header", type: boolean, default: true }
+          - name: title
+            label: "Section title"
+            type: object
+            fields:
+              - { name: ar, label: "Arabic title", type: string, required: false }
+              - { name: en, label: "English title", type: string, required: false }
+          - name: media
+            label: "Photo / Video"
+            type: object
+            fields:
+              - name: type
+                label: "Media type"
+                type: select
+                options: { values: [image, video] }
+                default: image
+              - { name: image, label: "Upload a new photo", type: image, required: false }
+              - { name: base, label: "Existing image filename (without extension)", type: string, required: false }
+              - { name: poster, label: "Video poster filename (video only)", type: string, required: false }
+              - { name: alt, label: "Alt text (accessibility)", type: string, required: false }
+              - { name: caption, label: "Caption under photo", type: string, required: false }
+              - { name: width, label: "Width", type: number, required: false }
+              - { name: height, label: "Height", type: number, required: false }
+          - name: sizeRow
+            label: "Size columns (juices only — leave blank otherwise)"
+            type: object
+            required: false
+            fields:
+              - { name: smallAr, label: "Small (Arabic)", type: string, required: false }
+              - { name: smallEn, label: "Small (English)", type: string, required: false }
+              - { name: largeAr, label: "Large (Arabic)", type: string, required: false }
+              - { name: largeEn, label: "Large (English)", type: string, required: false }
+          - name: groups
+            label: "Item groups"
+            description: Most sections have one group. Add a group with a subcategory label to start a new sub-list (e.g. Box of 8).
+            type: object
+            list: true
+            fields:
+              - { name: subcatAr, label: "Subcategory (Arabic)", type: string, required: false }
+              - { name: subcatEn, label: "Subcategory (English)", type: string, required: false }
+              - name: items
+                label: Items
+                type: object
+                list: true
+                fields:
+                  - { name: ar, label: "Arabic name", type: string }
+                  - { name: en, label: "English name", type: string }
+                  - { name: note, label: "Note / description", type: string, required: false }
+                  - { name: featured, label: "Featured (gold highlight)", type: boolean, default: false }
+                  - { name: price, label: "Price (e.g. 5, 3.5, +3)", type: string, required: false }
+                  - { name: twoPrice, label: "Two prices (small/large)", type: boolean, default: false }
+                  - { name: priceSmall, label: "Price — small", type: string, required: false }
+                  - { name: priceLarge, label: "Price — large", type: string, required: false }
