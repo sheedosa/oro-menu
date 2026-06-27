@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ORO Menu Editor</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&family=Cormorant+SC:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --burgundy: #5a2829;
+    --burgundy-deep: #481e1f;
+    --gold: #c4a35a;
+    --gold-soft: #d6bd7e;
+    --blush: #ead9d6;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--burgundy);
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    isolation: isolate;
+    overflow-x: hidden;
+  }
+  /* Brand scribble pattern, matching the main site */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='%23c4a35a' stroke-width='.6' opacity='.07'><path d='M50 300c40-80 110-120 200-90s130 100 90 200-150 110-220 50-120-100-70-160z'/><path d='M120 380c40-60 110-90 180-50s100 110 50 170-150 60-200 0-70-70-30-120z'/><path d='M300 100c50-30 130-10 170 50s30 130-30 170-150 30-190-30 0-160 50-190z'/><path d='M380 320c30-40 100-60 150-20s50 120 0 170-140 30-170-30-10-90 20-120z'/></g></svg>");
+    background-size: 600px 600px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .card {
+    width: min(540px, 100%);
+    text-align: center;
+    background: rgba(72, 30, 31, 0.45);
+    border: 1px solid rgba(196, 163, 90, 0.28);
+    border-radius: 18px;
+    padding: 48px 36px 40px;
+    backdrop-filter: blur(2px);
+  }
+
+  .logo-img {
+    width: min(190px, 56vw);
+    height: auto;
+    display: block;
+    margin: 0 auto 26px;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  .eyebrow {
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .42em;
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    font-weight: 700;
+    font-size: clamp(26px, 6vw, 34px);
+    margin: 0 0 4px;
+    color: #fff;
+  }
+  .h1-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--blush);
+    letter-spacing: .04em;
+    margin-bottom: 26px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--burgundy-deep);
+    font-family: 'Cormorant SC', serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 16px 34px;
+    border-radius: 999px;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    background: var(--gold-soft);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  }
+  .btn .arrow { font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+
+  .steps {
+    list-style: none;
+    margin: 34px 0 0;
+    padding: 0;
+    text-align: left;
+    display: grid;
+    gap: 14px;
+    max-width: 380px;
+    margin-inline: auto;
+  }
+  .steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+  }
+  .steps .n {
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cormorant SC', serif;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .steps b { color: var(--gold-soft); font-weight: 600; }
+
+  .tip {
+    margin-top: 28px;
+    font-size: 13px;
+    letter-spacing: .04em;
+    color: rgba(214, 189, 126, 0.6);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .divider {
+    width: 50px; height: 1px;
+    background: var(--gold);
+    opacity: .6;
+    margin: 26px auto;
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <picture>
+      <source srcset="../img/logo.webp" type="image/webp" />
+      <img src="../img/logo.png" alt="ORO Sweets &amp; Pastries" class="logo-img" width="495" height="258" />
+    </picture>
+
+    <div class="eyebrow">Content Manager</div>
+    <h1>محرر القائمة</h1>
+    <div class="h1-en">Menu Editor</div>
+
+    <a class="btn" href="https://app.pagescms.org/" target="_blank" rel="noopener">
+      Open the editor <span class="arrow">&rarr;</span>
+    </a>
+
+    <div class="divider"></div>
+
+    <ol class="steps">
+      <li><span class="n">1</span><span>Sign in with <b>GitHub</b>.</span></li>
+      <li><span class="n">2</span><span>Select the <b>oro-menu</b> repository.</span></li>
+      <li><span class="n">3</span><span>Edit prices, items &amp; photos, then <b>Save</b> — changes go live in about a minute.</span></li>
+    </ol>
+
+    <p class="tip">Tip: bookmark the page that opens to jump straight back in next time.</p>
+  </main>
+</body>
+</html>

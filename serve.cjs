@@ -20,18 +20,27 @@ const MIME = {
 };
 
 http.createServer((req, res) => {
-  let filePath = path.join(ROOT, req.url === '/' ? 'index.html' : req.url);
-  const ext = path.extname(filePath);
-  const contentType = MIME[ext] || 'application/octet-stream';
+  let urlPath = decodeURIComponent(req.url.split('?')[0]);
+  if (urlPath === '/') urlPath = '/index.html';
+  let filePath = path.join(ROOT, urlPath);
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(404);
-      res.end('Not found');
-      return;
+  // Resolve directory requests to index.html (mirrors GitHub Pages, e.g. /admin/ -> /admin/index.html)
+  fs.stat(filePath, (statErr, stats) => {
+    if (!statErr && stats.isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
     }
-    res.writeHead(200, { 'Content-Type': contentType });
-    res.end(data);
+    const ext = path.extname(filePath);
+    const contentType = MIME[ext] || 'application/octet-stream';
+
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404);
+        res.end('Not found');
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(data);
+    });
   });
 }).listen(PORT, () => {
   console.log(`ORO landing page served at http://localhost:${PORT}`);
