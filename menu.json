@@ -554,6 +554,13 @@
           "twoPrice": false
         },
         {
+          "ar": "باشن فروت",
+          "en": "Passion Fruit",
+          "price": "15",
+          "featured": false,
+          "twoPrice": false
+        },
+        {
           "ar": "غلال الغابة",
           "en": "Forest Berries",
           "price": "15",
