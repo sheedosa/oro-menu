@@ -32,14 +32,27 @@
     return '<li class="' + cls + '">' + name + prices + '</li>';
   }
 
-  function renderGroup(g) {
+  // Walk a flat items array. An item carrying a subcat heading starts a new
+  // <ul> group (preceded by the gold .subcat divider) — reproduces the original
+  // "subcategory then its own list" structure from a single editable list.
+  function renderItems(items) {
     var out = '';
-    if (g.subcatAr || g.subcatEn) {
-      var variant = g.variant === 'en' ? ' en' : ' ar';
-      var label = [g.subcatAr, g.subcatEn].filter(Boolean).join(' · ');
-      out += '<div class="subcat' + variant + '">' + esc(label) + '</div>';
-    }
-    out += '<ul class="item-list">' + (g.items || []).map(renderItem).join('') + '</ul>';
+    var open = false;
+    (items || []).forEach(function (it) {
+      if (it.subcatAr || it.subcatEn) {
+        if (open) { out += '</ul>'; }
+        var variant = it.subcatVariant === 'en' ? ' en' : ' ar';
+        var label = [it.subcatAr, it.subcatEn].filter(Boolean).join(' · ');
+        out += '<div class="subcat' + variant + '">' + esc(label) + '</div>';
+        out += '<ul class="item-list">';
+        open = true;
+      } else if (!open) {
+        out += '<ul class="item-list">';
+        open = true;
+      }
+      out += renderItem(it);
+    });
+    if (open) { out += '</ul>'; }
     return out;
   }
 
@@ -93,7 +106,7 @@
                 '</div>';
     var items = '<div class="items-cell">' +
                   renderSizeRow(s.sizeRow) +
-                  (s.groups || []).map(renderGroup).join('') +
+                  renderItems(s.items) +
                 '</div>';
     var grid = '<div class="menu-grid' + (s.flip ? ' flip' : '') + '">' + photo + items + '</div>';
     return '<section id="' + esc(s.id) + '" class="' + cls + '">' +

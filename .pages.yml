@@ -1,6 +1,9 @@
 # Pages CMS config — https://pagescms.org
 # The café owner edits menu.json through a form at app.pagescms.org.
 # Saving commits to GitHub; the live GitHub Pages site updates automatically.
+#
+# Structure: Menu Sections → each section has a direct list of Items.
+# Every item shows its name + price and can be added, removed, reordered, or edited.
 
 media:
   input: img        # folder in the repo where photos live
@@ -13,7 +16,7 @@ content:
     path: menu.json
     fields:
       - name: nav
-        label: Top Navigation
+        label: Top Navigation (advanced)
         description: The pills in the sticky bar. One per section you want linked (Tea is intentionally left out).
         type: object
         list: true
@@ -28,21 +31,34 @@ content:
         list: true
         fields:
           - { name: id, label: "Section ID (URL-safe, unique)", type: string }
-          - name: theme
-            label: "Background theme"
-            type: select
-            options: { values: [dark, light] }
-            default: dark
-          - { name: flip, label: "Flip layout", type: boolean, default: false }
-          - { name: showHead, label: "Show section header", type: boolean, default: true }
           - name: title
             label: "Section title"
             type: object
             fields:
               - { name: ar, label: "Arabic title", type: string, required: false }
               - { name: en, label: "English title", type: string, required: false }
+
+          # ---- The items the client edits most ----
+          - name: items
+            label: Items
+            description: Each row is a menu item. Edit its name and price, or use + / – to add and remove items.
+            type: object
+            list: true
+            fields:
+              - { name: ar, label: "Arabic name", type: string }
+              - { name: en, label: "English name", type: string }
+              - { name: price, label: "Price (e.g. 5, 3.5, or +3)", type: string, required: false }
+              - { name: note, label: "Note / description (optional)", type: text, required: false }
+              - { name: featured, label: "Featured (gold highlight)", type: boolean, default: false }
+              - { name: twoPrice, label: "Two prices? (small / large — juices only)", type: boolean, default: false }
+              - { name: priceSmall, label: "Price — small", type: string, required: false }
+              - { name: priceLarge, label: "Price — large", type: string, required: false }
+              - { name: subcatAr, label: "Start a new subcategory here — Arabic (optional)", type: string, required: false }
+              - { name: subcatEn, label: "Start a new subcategory here — English (optional)", type: string, required: false }
+
+          # ---- Section appearance (advanced; rarely changed) ----
           - name: media
-            label: "Photo / Video"
+            label: "Photo / Video (advanced)"
             type: object
             fields:
               - name: type
@@ -66,24 +82,10 @@ content:
               - { name: smallEn, label: "Small (English)", type: string, required: false }
               - { name: largeAr, label: "Large (Arabic)", type: string, required: false }
               - { name: largeEn, label: "Large (English)", type: string, required: false }
-          - name: groups
-            label: "Item groups"
-            description: Most sections have one group. Add a group with a subcategory label to start a new sub-list (e.g. Box of 8).
-            type: object
-            list: true
-            fields:
-              - { name: subcatAr, label: "Subcategory (Arabic)", type: string, required: false }
-              - { name: subcatEn, label: "Subcategory (English)", type: string, required: false }
-              - name: items
-                label: Items
-                type: object
-                list: true
-                fields:
-                  - { name: ar, label: "Arabic name", type: string }
-                  - { name: en, label: "English name", type: string }
-                  - { name: note, label: "Note / description", type: string, required: false }
-                  - { name: featured, label: "Featured (gold highlight)", type: boolean, default: false }
-                  - { name: price, label: "Price (e.g. 5, 3.5, +3)", type: string, required: false }
-                  - { name: twoPrice, label: "Two prices (small/large)", type: boolean, default: false }
-                  - { name: priceSmall, label: "Price — small", type: string, required: false }
-                  - { name: priceLarge, label: "Price — large", type: string, required: false }
+          - name: theme
+            label: "Background theme (advanced)"
+            type: select
+            options: { values: [dark, light] }
+            default: dark
+          - { name: flip, label: "Flip layout (advanced)", type: boolean, default: false }
+          - { name: showHead, label: "Show section header (advanced)", type: boolean, default: true }
