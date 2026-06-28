@@ -21,7 +21,9 @@ content:
         label: Menu Sections
         type: object
         list:
-          summary: "{fields.title.en} · {fields.title.ar}"
+          collapsible:
+            collapsed: true
+            summary: "{fields.title.en} · {fields.title.ar}"
         fields:
           - name: title
             label: "Section name"
@@ -36,7 +38,9 @@ content:
             description: "Each row is a menu item. Edit its name and price, or use + / – to add and remove."
             type: object
             list:
-              summary: "{fields.en} — {fields.price}{fields.priceSmall}"
+              collapsible:
+                collapsed: true
+                summary: "{fields.en} — {fields.price}{fields.priceSmall}"
             fields:
               - { name: ar, label: "Arabic name", type: string }
               - { name: en, label: "English name", type: string }
@@ -91,7 +95,9 @@ content:
         description: "The pills in the sticky bar. Only change when adding or removing a whole section. (Tea is intentionally left out.)"
         type: object
         list:
-          summary: "{fields.en}"
+          collapsible:
+            collapsed: true
+            summary: "{fields.en}"
         fields:
           - { name: href, label: "Section ID (e.g. hot-drinks)", type: string }
           - { name: ar, label: "Arabic label", type: string }
