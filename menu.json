@@ -160,6 +160,10 @@
       "theme": "dark",
       "flip": true,
       "showHead": false,
+      "title": {
+        "ar": "شاي",
+        "en": "TEA"
+      },
       "media": {
         "type": "image",
         "base": "tea-chocolate",
